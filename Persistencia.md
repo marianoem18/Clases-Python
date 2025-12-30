@@ -21,7 +21,8 @@ Antes de entrar en bases de datos, recordemos cómo manejamos datos hasta ahora.
 ```python
 import pandas as pd
 df = pd.read_json('products.json')
-print(df.head())
+print(df.head()) ```
+
 Esto es genial para análisis, pero si el programa termina, los cambios no se guardan automáticamente.
 Problema que resuelven las bases de datos:
 Imagina una app de tienda: quieres guardar ventas nuevas permanentemente, no perderlas al cerrar el programa. Las bases de datos almacenan datos en disco de forma estructurada y segura.
