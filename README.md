@@ -58,117 +58,59 @@ La aplicación debe mostrar:
 ## Entrega
 - Archivo `.py` con el código de la aplicación
 - ---------------------------------------------------------------------------------------------------
-# Continuación Trabajo Práctico – CRUD de Productos con SQLite y Streamlit
+# Trabajo Práctico – Sistema de Login con SQLite y Streamlit
 
 ## Contexto
-En la clase anterior se realizó la migración de los datos desde un archivo CSV a una base de datos SQLite (`productos.db`).  
-A partir de ahora, la aplicación **ya no trabaja con archivos**, sino directamente con una base de datos.
+Actualmente, la aplicación permite visualizar un catálogo de productos utilizando una base de datos SQLite.  
+En este trabajo práctico se agregará un **sistema de autenticación**, permitiendo que solo los usuarios registrados puedan acceder a la aplicación.
 
-En este trabajo práctico, se deberá ampliar la aplicación para permitir **gestionar los productos** mediante operaciones CRUD.
+Este tipo de funcionalidad es común en aplicaciones reales y permite controlar el acceso a la información.
 
 ---
 
 ## Objetivo
-Modificar la aplicación desarrollada en Streamlit para que permita **crear, leer, actualizar y eliminar productos** almacenados en una base de datos SQLite.
-
-El objetivo principal es comprender cómo una aplicación interactúa con una base de datos en tiempo real.
-
----
-
-## ¿Qué es un CRUD?
-CRUD es un conjunto de operaciones básicas sobre una base de datos:
-
-- **Create** → Crear registros
-- **Read** → Leer registros
-- **Update** → Actualizar registros
-- **Delete** → Eliminar registros
-
-Estas operaciones son la base de cualquier sistema real.
+Agregar un sistema de **login de usuarios** a la aplicación desarrollada en Streamlit, utilizando una base de datos SQLite para almacenar las credenciales.
 
 ---
 
 ## Base de datos
-Se trabajará con la base de datos `productos.db`, que contiene la tabla `productos` con los siguientes campos:
+Se trabajará con la base de datos existente (`productos.db`) y se deberá agregar una nueva tabla llamada `usuarios`, con los siguientes campos:
 
-- `id` (clave primaria)
-- `codigo`
-- `nombre`
-- `precio`
-- `tipo`
-- `cantidad`
+- `id` (entero, clave primaria)
+- `username` (texto)
+- `password` (texto)
 
 ---
 
 ## Consignas
 
-### 1. Lectura de datos (READ)
-La aplicación debe:
-
-- Conectarse a la base de datos SQLite.
-- Obtener todos los productos desde la tabla `productos`.
-- Convertir los datos en un DataFrame utilizando pandas.
-- Mostrar el listado de productos en la aplicación.
-
-👉 Esta operación reemplaza completamente la lectura del archivo CSV.
+### 1. Crear la tabla de usuarios
+- Crear la tabla `usuarios` en la base de datos.
+- Insertar al menos un usuario de prueba.
 
 ---
 
-### 2. Alta de productos (CREATE)
-La aplicación debe permitir:
-
-- Ingresar los datos de un nuevo producto desde la interfaz de Streamlit.
-- Validar que los campos no estén vacíos.
-- Insertar el nuevo producto en la base de datos.
-- Actualizar la vista para mostrar el nuevo producto agregado.
-
-📌 Esta operación debe utilizar una consulta SQL de tipo `INSERT`.
+### 2. Pantalla de login
+La aplicación debe mostrar inicialmente:
+- Un campo para ingresar el nombre de usuario.
+- Un campo para ingresar la contraseña.
+- Un botón para iniciar sesión.
 
 ---
 
-### 3. Modificación de productos (UPDATE)
-La aplicación debe permitir:
-
-- Seleccionar un producto existente (por ejemplo, usando su `id` o nombre).
-- Mostrar los datos actuales del producto.
-- Modificar uno o más campos.
-- Guardar los cambios en la base de datos.
-- Refrescar la información mostrada.
-
-📌 Esta operación debe utilizar una consulta SQL de tipo `UPDATE`.
+### 3. Validación de credenciales
+- Al presionar el botón de login, la aplicación debe:
+  - Consultar la base de datos.
+  - Verificar si el usuario existe.
+  - Comparar la contraseña ingresada con la almacenada.
+- Si los datos son correctos, permitir el acceso a la aplicación.
+- Si los datos son incorrectos, mostrar un mensaje de error.
 
 ---
 
-### 4. Eliminación de productos (DELETE)
-La aplicación debe permitir:
-
-- Seleccionar un producto existente.
-- Confirmar la eliminación del producto.
-- Eliminar el producto de la base de datos.
-- Actualizar la lista de productos mostrada.
-
-📌 Esta operación debe utilizar una consulta SQL de tipo `DELETE`.
-
----
-
-## Uso de Streamlit
-Para la interfaz, se recomienda utilizar:
-
-- Formularios para carga y edición de productos.
-- Selectores para elegir productos.
-- Botones para confirmar acciones.
-- Mensajes de éxito o error para informar al usuario.
-
-La aplicación debe ser clara y fácil de usar.
-
----
-
-## Uso de SQLite
-Para la base de datos, se deberá:
-
-- Utilizar la librería `sqlite3`.
-- Crear funciones separadas para cada operación CRUD.
-- Abrir y cerrar correctamente la conexión a la base de datos.
-- Confirmar los cambios realizados (commit).
+### 4. Acceso al catálogo
+- Solo los usuarios autenticados deben poder ver el catálogo de productos.
+- Si el usuario no está autenticado, no debe poder acceder a los datos.
 
 ---
 
@@ -176,19 +118,18 @@ Para la base de datos, se deberá:
 - Usar Python
 - Usar Streamlit
 - Usar SQLite
-- Usar pandas para mostrar datos
 - Mantener el código ordenado y comentado
-- No utilizar más el archivo CSV como fuente de datos
 
 ---
 
 ## Concepto clave del trabajo
-> La aplicación ahora puede modificar los datos en tiempo real.
+> El acceso a la información debe estar controlado.
 
 ---
 
 ## Entrega
-- Archivo `productos.db`
-- Código actualizado de la aplicación en Streamlit
-- La aplicación debe permitir crear, leer, modificar y eliminar productos correctamente
+- Base de datos actualizada (`productos.db`)
+- Código de la aplicación con sistema de login funcionandot
+
+
 
